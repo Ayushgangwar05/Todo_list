@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo_List</title>
+</head>
+<style>
+    .main_div {
+        width: 60%;
+        margin: auto;
+        border: 1px solid #5d00b7;
+        background-color: #c6c6c6;
+        padding: 0px 40px 25px 40px;
+        border-radius: 0px 0px 7px 7px;
+    }
+
+    .main_div2 h2 {
+        text-align: center;
+        font-size: 38px;
+        color: white;
+        background-color: #5d00b7;
+        font-weight: 500;
+        padding: 20px;
+        margin: 0px;
+    }
+
+    .main_div .input_box {
+        text-align: center;
+        padding: 43px 23px 10px 23px;
+    }
+
+    .main_div .input_box input {
+        width: 93%;
+        height: 48px;
+        padding: 0px 10px;
+        border: 1px solid white;
+        border-radius: 7px;
+    }
+
+    .main_div .input_box button {
+        padding: 10px 24px;
+        font-size: 20px;
+        border-radius: 7px;
+        border: 1px solid white;
+        background-color: #d0f1ee;
+        margin-top: 30px;
+        cursor: pointer;
+    }
+
+    .main_div .input_box button:hover {
+        background-color: black;
+        color: white;
+
+    }
+
+    .show_allname {
+        text-align: end;
+        margin-top: 20px;
+
+
+    }
+
+    .show_allname button {
+        padding: 10px 24px;
+        border-radius: 7px;
+        border: 1px solid #f58da5;
+        background-color: #f58da5;
+        font-size: 20px;
+        cursor: pointer;
+        margin-right: 17vw;
+    }
+
+    .newstyles {
+        padding-top: 14px;
+        color: rgb(0, 0, 0);
+        font-size: 19px;
+        list-style: auto;
+
+    }
+</style>
+
+
+<body>
+
+    <div class="main_div2">
+        <h2>ToDo List</h2>
+
+        <div class="main_div">
+            <div class="input_box">
+                <input id="textname" type="text" placeholder="enter a name" required />
+                <button id="add_me">Add Me</button>
+            </div>
+
+            <div id="name_add">
+
+            </div>
+
+
+
+        </div>
+        <div class="show_allname">
+            <button id="show_All">Show all</button>
+        </div>
+
+    </div>
+
+
+
+
+    <script>
+
+        let text = document.getElementById("textname")
+        let inputval = " "
+        let arr = new Array();
+        text.addEventListener("input", (event) => {
+
+            inputval = event.target.value;
+            console.log(inputval)
+
+        })
+        let button1 = document.getElementById("add_me")
+        button1.addEventListener("click", (event) => {
+            console.log("Click me")
+            let newarr = document.getElementById("name_add")
+            let div = document.createElement("li")
+            div.innerHTML = inputval;
+            div.className = "newstyles"
+            div.id = "newstyles"
+            newarr.appendChild(div)
+            arr.push(inputval)
+            console.log("Updated array:", arr);
+        })
+        let showall1 = document.getElementById("show_All")
+        showall1.addEventListener("click", (event) => {
+            localStorage.arr = JSON.stringify(arr);
+            window.location.href = "/ShowDetails.html";
+            console.log(showall1)
+            console.log(arr)
+            let lastname = localStorage.getItem(arr);
+            console.log(lastname + "lastname")
+        })
+
+
+    </script>
+</body>
+
+</html>
